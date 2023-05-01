@@ -28,6 +28,8 @@ class HistoryFragment : Fragment() {
     }
 
     private fun initObserver() {
-
+        viewModel.operation.observe(viewLifecycleOwner){
+            binding.tvHistory.text = it
+        }
     }
 }

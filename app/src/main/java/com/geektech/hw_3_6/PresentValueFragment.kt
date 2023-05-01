@@ -23,14 +23,13 @@ class PresentValueFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
+        viewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
         initObserver()
     }
 
     private fun initObserver() {
-        viewModel.mCounter.observe(requireActivity()) {
+        viewModel.mCounter.observe(viewLifecycleOwner) {
             binding.tvValue.text = it.toString()
         }
     }
-
 }
